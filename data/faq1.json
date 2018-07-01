@@ -1,0 +1,17 @@
+{
+  "question" : "q1 is?",
+  "answer" : "a1 and a lot of text",
+  "tags" : [ "java", "python", "other" ]
+}
+
+{
+  "question" : "q3 is?",
+  "answer" : "a3 and a lot of text",
+  "tags" : [ "other", "Ruby", "perl" ]
+}
+
+{
+  "question" : "q2 is?",
+  "answer" : "a2 and a lot of text",
+  "tags" : [ "other", "java", "perl" ]
+}
