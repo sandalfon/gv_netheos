@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Tag {
 	
@@ -35,7 +37,8 @@ public class Tag {
 	public void setContent(String content) {
 		this.content = content;
 	}
-
+	
+	@JsonIgnore
 	public List<Faq> getFaqs() {
 		return faqs;
 	}
@@ -44,6 +47,6 @@ public class Tag {
 		this.faqs = faqs;
 	}
 	
-	
+
 	
 }

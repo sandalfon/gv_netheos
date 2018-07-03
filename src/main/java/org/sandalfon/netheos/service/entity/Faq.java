@@ -20,26 +20,26 @@ public class Faq {
 	private String question;
 	private String answer;
 	@ManyToMany(cascade = { 
-		    CascadeType.PERSIST, 
-		    CascadeType.MERGE
-		})
+			CascadeType.PERSIST, 
+			CascadeType.MERGE
+	})
 	@JoinTable(name = "faq_tag",
-    joinColumns = @JoinColumn(name = "faq_id"),
-            inverseJoinColumns = @JoinColumn(name = "tag_id")
-        )
-        private List<Tag> tags = new ArrayList<>();
-	
-    public void addTag(Tag tag) {
-        tags.add(tag);
-        tag.getFaqs().add(this);
-    }
- 
-    public void removeTag(Tag tag) {
-        tags.remove(tag);
-        tag.getFaqs().remove(this);
-    }
-	
-	
+	joinColumns = @JoinColumn(name = "faq_id"),
+	inverseJoinColumns = @JoinColumn(name = "tag_id")
+			)
+	private List<Tag> tags = new ArrayList<>();
+
+	public void addTag(Tag tag) {
+		tags.add(tag);
+		tag.getFaqs().add(this);
+	}
+
+	public void removeTag(Tag tag) {
+		tags.remove(tag);
+		tag.getFaqs().remove(this);
+	}
+
+
 	public Long getId() {
 		return id;
 	}
@@ -62,14 +62,24 @@ public class Faq {
 	public void setTags(List<Tag> tags) {
 		this.tags = tags;
 	}
-	
+
 	@Override
 	public String toString() {
-	    return "Question: \n"+ this.question+"\n"
-	    		+ "Answer: \n"+this.answer+"\n"
-	    				+ "tag : "+this.tags.toString();
+		String tag = "";
+		if(tags.size()>0) {
+			tag = tags.get(0).getContent();
+
+			for(int i = 1; i< tags.size();i++) {
+				tag = tag +", "+tags.get(i).getContent();
+			}
+
+		}
+
+		return "Question: \n"+ this.question+"\n"
+		+ "Answer: \n"+this.answer+"\n"
+		+ "tag : "+tag;
 	}
-	
-	
-	
+
+
+
 }
