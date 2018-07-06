@@ -1,0 +1,579 @@
+{
+	"info": {
+		"_postman_id": "e816db04-6f9e-4aba-8fcf-14785e56b096",
+		"name": "Netheos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "usecase 1",
+			"description": "",
+			"item": [
+				{
+					"name": "Usecase 1 create Admin",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "adminNetheos",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "netheos",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"question\" : \"est ce que la creation d'une ligne de FAQ marche?\",\r\n  \"answer\" : \"Ent théorie oui, suffit de lister pour voir si elle apparait\",\r\n  \"tags\" : [ \"creer\", \"useCase1\", \"faq\" ]\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/netheos/netheos/faq",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"netheos",
+								"netheos",
+								"faq"
+							]
+						},
+						"description": "Création avec droit admin use case1"
+					},
+					"response": []
+				},
+				{
+					"name": "Usecase 1 create User => 403",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "user?etheos",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "netheosUser",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"question\" : \"est ce que la creation d'une ligne de FAQ marche?\",\r\n  \"answer\" : \"Ent théorie oui, suffit de lister pour voir si elle apparait\",\r\n  \"tags\" : [ \"creer\", \"useCase1\", \"faq\" ]\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/netheos/netheos/faq",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"netheos",
+								"netheos",
+								"faq"
+							]
+						},
+						"description": "Creation avec un compte utilisateur renvoie erreur 403"
+					},
+					"response": []
+				},
+				{
+					"name": "Usecase 1 create Anonymous => 401",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"question\" : \"est ce que la creation d'une ligne de FAQ marche?\",\r\n  \"answer\" : \"Ent théorie oui, suffit de lister pour voir si elle apparait\",\r\n  \"tags\" : [ \"creer\", \"useCase1\", \"faq\" ]\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/netheos/netheos/faq",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"netheos",
+								"netheos",
+								"faq"
+							]
+						},
+						"description": "Creation sans compte utilisateur renvoie erreur 401"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "usecase 2",
+			"description": "",
+			"item": [
+				{
+					"name": "Usecase 2 List Anonymous => 401",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"question\" : \"est ce que la creation d'une ligne de FAQ marche?\",\r\n  \"answer\" : \"Ent théorie oui, suffit de lister pour voir si elle apparait\",\r\n  \"tags\" : [ \"creer\", \"useCase1\", \"faq\" ]\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/netheos/netheos/faq",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"netheos",
+								"netheos",
+								"faq"
+							]
+						},
+						"description": "Lister la faq sans compte renvoie erreur 401"
+					},
+					"response": []
+				},
+				{
+					"name": "Usecase 2 List compte user=> 403",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "userNetheos",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "netheosUser",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"question\" : \"est ce que la creation d'une ligne de FAQ marche?\",\r\n  \"answer\" : \"Ent théorie oui, suffit de lister pour voir si elle apparait\",\r\n  \"tags\" : [ \"creer\", \"useCase1\", \"faq\" ]\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/netheos/netheos/faq",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"netheos",
+								"netheos",
+								"faq"
+							]
+						},
+						"description": "Lister la faq avec un compte de droit user renvoie erreur 403"
+					},
+					"response": []
+				},
+				{
+					"name": "Usecase 2 List compte Admin=> liste json des faq questions/reponses/tags",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "adminNetheos",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "netheos",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"question\" : \"est ce que la creation d'une ligne de FAQ marche?\",\r\n  \"answer\" : \"Ent théorie oui, suffit de lister pour voir si elle apparait\",\r\n  \"tags\" : [ \"creer\", \"useCase1\", \"faq\" ]\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/netheos/netheos/faq",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"netheos",
+								"netheos",
+								"faq"
+							]
+						},
+						"description": "Lister la faq avec un compte de droit admin  renvoie un json avec la liste des FAQ composées d'une question, d'une réponse et de tags"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "usecase 3",
+			"description": "",
+			"item": [
+				{
+					"name": "Search by phrase Admin ",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "adminNetheos",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "netheos",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/plain"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "du java et other et faq\r\n"
+						},
+						"url": {
+							"raw": "http://localhost:8080/netheos/netheos/searchByPhrase",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"netheos",
+								"netheos",
+								"searchByPhrase"
+							]
+						},
+						"description": "recherche par phrase et returne un json de list de faq triées par le nombre de mot clés pertinents. "
+					},
+					"response": []
+				},
+				{
+					"name": "Search by phrase User",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "netheosUser",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "userNetheos",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/plain"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "du java et other et faq\r\n"
+						},
+						"url": {
+							"raw": "http://localhost:8080/netheos/netheos/searchByPhrase",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"netheos",
+								"netheos",
+								"searchByPhrase"
+							]
+						},
+						"description": "recherche par phrase et returne un json de list de faq triées par le nombre de mot clés pertinents. "
+					},
+					"response": []
+				},
+				{
+					"name": "Search by phrase Anonymous => 401",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/plain"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "du java et other et faq\r\n"
+						},
+						"url": {
+							"raw": "http://localhost:8080/netheos/netheos/searchByPhrase",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"netheos",
+								"netheos",
+								"searchByPhrase"
+							]
+						},
+						"description": "recherche par phrase et returne une erreur 401 pour un utilisateur anonyme "
+					},
+					"response": []
+				},
+				{
+					"name": "Search by Tag Anonymous => 401",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\"java\", \"other\", \"faq\"]\r\n"
+						},
+						"url": {
+							"raw": "http://localhost:8080/netheos/netheos/searchByTags",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"netheos",
+								"netheos",
+								"searchByTags"
+							]
+						},
+						"description": "recherche par tags et returne une erreur 401 pour un utilisateur anonyme "
+					},
+					"response": []
+				},
+				{
+					"name": "Search by tag User",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "userNetheos",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "netheosUser",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\"java\", \"other\", \"faq\"]\r\n"
+						},
+						"url": {
+							"raw": "http://localhost:8080/netheos/netheos/searchByTags",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"netheos",
+								"netheos",
+								"searchByTags"
+							]
+						},
+						"description": "recherche par phrase et returne un json de list de faq triées par le nombre de mot clés pertinents. "
+					},
+					"response": []
+				},
+				{
+					"name": "Search by tag Admin",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "adminNetheos",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "netheos",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\"java\", \"other\", \"faq\"]\r\n"
+						},
+						"url": {
+							"raw": "http://localhost:8080/netheos/netheos/searchByTags",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"netheos",
+								"netheos",
+								"searchByTags"
+							]
+						},
+						"description": "recherche par phrase et returne un json de list de faq triées par le nombre de mot clés pertinents. "
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
