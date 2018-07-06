@@ -15,8 +15,8 @@ code source for application and Test
 * Tomcat (prérequis)
 * Maven (prérequis)
 * Spring boot ( Déjà utilisé, nombreuses bibliothèques, populaire => nombreux exemple, tuto, soutient en cas de porlbème)
-  * Spring-boot-starter-data-rest
-  * Spring-boot-starter-security
+  * Spring-boot-starter-data-rest => REST (prérequis)
+  * Spring-boot-starter-security => (gestion des droits, hashage des mots de passes)
 * Mysql (habitude et adapté compatible prérquis )
 
 # Questions
